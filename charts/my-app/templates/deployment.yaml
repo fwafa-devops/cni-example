@@ -22,5 +22,8 @@ spec:
             - name: http
               containerPort: {{ .Values.containerPort }}
               protocol: TCP
+          env:
+            - name: APP_COLOR
+              value: {{ .Values.appColor | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
