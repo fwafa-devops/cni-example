@@ -13,13 +13,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/hjukic/cni-example
+    repoURL: https://github.com/fwafa-devops/cni-example
     targetRevision: HEAD
     path: charts/applications
     helm:
       values: |
         global:
-          repoURL: https://github.com/hjukic/cni-example
+          repoURL: https://github.com/fwafa-devops/cni-example
           targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
