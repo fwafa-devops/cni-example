@@ -1,0 +1,33 @@
+# Custom values for webapp-color application
+# This demonstrates GitOps upgrades and rollbacks with visual color changes
+
+# Basic configuration
+replicaCount: 2
+
+# Image settings - use kodekloud/webapp-color
+image:
+  repository: kodekloud/webapp-color
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+# Container configuration
+containerPort: 8080
+
+# Color selector - change this to switch colors instantly!
+# The webapp-color container accepts: red, green, blue, darkblue, pink
+appColor: "blue"
+
+# Service configuration - NodePort with specific port for reliable access
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30080  # Specific NodePort for easy access
+
+# Resource limits
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

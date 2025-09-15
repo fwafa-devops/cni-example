@@ -1,0 +1,6 @@
+apiVersion: v2
+name: webapp-color
+description: Simple webapp with configurable background color using kodekloud/webapp-color
+type: application
+version: 0.1.0
+appVersion: "latest"
