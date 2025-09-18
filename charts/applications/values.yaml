@@ -9,3 +9,11 @@ applications:
     enabled: true
     project: default
     namespace: webapp-color
+  my-app:
+    enabled: true
+    project: default
+    namespace: my-app
+  my-app-2:
+    enabled: true
+    project: default
+    namespace: my-app-2
