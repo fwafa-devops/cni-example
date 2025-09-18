@@ -2,7 +2,7 @@
 # This demonstrates GitOps upgrades and rollbacks with configurable features
 
 # Basic configuration
-replicaCount: 3
+replicaCount: 2
 
 # Image settings - use kodekloud/webapp-color
 image:
