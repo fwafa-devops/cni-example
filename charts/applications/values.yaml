@@ -1,6 +1,6 @@
 # Global settings for all ArgoCD Applications
 global:
-  repoURL: https://github.com/fwafa-devops/cni-example
+  repoURL: https://nexus-test.soka-bau.de/repository/git-test/fwafa-devops/cni-example
   targetRevision: HEAD
 
 # Application configurations
