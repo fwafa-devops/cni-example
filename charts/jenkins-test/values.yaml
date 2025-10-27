@@ -30,8 +30,8 @@ service:
     - name: http
       port: 8080
       targetPort: 8080
-      nodePort: 30088
+      nodePort: 32080
     - name: jnlp
       port: 50000
       targetPort: 50000
-      nodePort: 50050
+      nodePort: 32050
