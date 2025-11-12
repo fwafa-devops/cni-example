@@ -21,7 +21,7 @@ appColor: "green"
 service:
   type: NodePort
   port: 80
-  nodePort: 30082  # Specific NodePort for easy access
+  nodePort: 32082  # Specific NodePort for easy access
 
 # Resource limits
 resources:
