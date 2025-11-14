@@ -9,7 +9,7 @@ pvc:
 
 deployment:
   name: jenkins-test
-  replicas: 2
+  replicas: 1
   image:
     repository: jenkins-test
     tag: latest
