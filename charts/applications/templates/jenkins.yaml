@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: jenkins-test
+  name: jenkins
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: {{ .Values.global.repoURL }}
-    path: charts/jenkins-test
+    path: charts/jenkins
     targetRevision: {{ .Values.global.targetRevision }}
   destination:
     server: https://kubernetes.default.svc

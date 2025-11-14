@@ -9,7 +9,7 @@ applications:
     enabled: true
     project: default
     namespace: webapp-color
-  jenkins-test:
+  jenkins:
     enabled: true
     project: default
     namespace: jenkins
