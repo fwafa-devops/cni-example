@@ -9,19 +9,7 @@ applications:
     enabled: true
     project: default
     namespace: webapp-color
-  my-app:
-    enabled: true
-    project: default
-    namespace: my-app
-  my-app-2:
-    enabled: true
-    project: default
-    namespace: my-app-2
   jenkins-test:
     enabled: true
     project: default
     namespace: jenkins
-  uptime-kuma:
-    enabled: true
-    project: default
-    namespace: uptime-kuma
