@@ -13,3 +13,7 @@ applications:
     enabled: true
     project: default
     namespace: jenkins
+  uptime-kuma:
+    enabled: true
+    project: default
+    namespace: uptime-kuma
