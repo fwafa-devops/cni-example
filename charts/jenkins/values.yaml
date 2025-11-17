@@ -1,0 +1,72 @@
+namespace: jenkins
+
+pvc:
+  name: jenkins
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  size: 20Gi
+
+deployment:
+  name: jenkins
+  replicas: 1
+  image:
+    repository: jenkins-test
+    tag: latest
+    pullPolicy: IfNotPresent
+  containerPorts:
+    - name: http
+      containerPort: 8080
+    - name: jnlp
+      containerPort: 50000
+  volumeMount:
+    name: jenkins-home
+    mountPath: /var/jenkins_home
+
+service:
+  name: jenkins
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 32080
+    - name: jnlp
+      port: 50000
+      targetPort: 50000
+      nodePort: 32050
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jenkins
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create","delete","get","list","patch","update","watch"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["create","delete","get","list","patch","update","watch"]
+- apiGroups: [""]
+  resources: ["pods/log"]
+  verbs: ["get","list","watch"]
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["watch"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get"]
+
+---
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jenkins
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: jenkins
+subjects:
+- kind: ServiceAccount
+  name: jenkins
