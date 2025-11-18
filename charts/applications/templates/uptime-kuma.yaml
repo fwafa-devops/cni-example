@@ -1,4 +1,4 @@
-{{- $app := .Values.applications.uptime-kuma -}}
+{{- $app := index .Values.applications "uptime-kuma" -}}
 {{- if and $app $app.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
