@@ -23,7 +23,7 @@ spec:
             - name: data
               mountPath: {{ .Values.persistence.mountPath }}
           resources:
-{{- toYaml .Values.resources | indent 12 }}
+{{ toYaml .Values.resources | nindent 12 }}
 {{- if .Values.persistence.enabled }}
       volumes:
         - name: data
