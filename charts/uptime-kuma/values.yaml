@@ -1,22 +1,29 @@
-# Uptime Kuma Helm chart values
-# For all available options, see: https://artifacthub.io/packages/helm/uptime-kuma/uptime-kuma
+replicaCount: 1
 
-uptime-kuma:
-  # Storage configuration
-  persistence:
-    enabled: true
-    size: 1Gi
-  
-  # Service configuration
-  service:
-    type: NodePort
-    port: 3001
-    nodePort: 32222  # Optional: specify a port between 30000-32767
-  
-  # Image configuration - override to use newer version
-  image:
-    repository: louislam/uptime-kuma
-    pullPolicy: IfNotPresent
-    tag: "2.0.2"
+image:
+  repository: louislam/uptime-kuma
+  pullPolicy: IfNotPresent
+  tag: "2.0.2"
 
-# For version monitoring instructions, see README2.md
+service:
+  name: uptime-kuma
+  type: NodePort
+  port: 3001
+  nodePort: 32222
+
+persistence:
+  enabled: true
+  claimName: uptime-kuma-data
+  mountPath: /app/data
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  size: 1Gi
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

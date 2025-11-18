@@ -1,3 +1,5 @@
+{{- $app := .Values.applications.uptime-kuma -}}
+{{- if and $app $app.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -6,17 +8,18 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: {{ $app.project }}
   source:
     repoURL: {{ .Values.global.repoURL }}
     path: charts/uptime-kuma
     targetRevision: {{ .Values.global.targetRevision }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: uptime-kuma
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#     syncOptions:
-#       - CreateNamespace=true
-#       - ServerSideApply=true
+    namespace: {{ $app.namespace }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+{{- end }}
